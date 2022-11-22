@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://utils/Word.tscn" type="PackedScene" id=1]
+[ext_resource path="res://HUD/number_tool.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/HighScoreTicker.gd" type="Script" id=3]
+
+[node name="HighScoreTicker" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Word" parent="." instance=ExtResource( 1 )]
+position = Vector2( -78.6045, 0 )
+word = "FUBAR"
+
+[node name="Number" parent="." instance=ExtResource( 2 )]
+position = Vector2( 88, 0 )
+
+[node name="DisplayTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="DisplayTimer" to="." method="_on_DisplayTimer_timeout"]

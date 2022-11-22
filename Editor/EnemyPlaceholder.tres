@@ -1,0 +1,33 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=2]
+
+[ext_resource path="res://Editor/images/Mushroom.png" type="Texture" id=1]
+[ext_resource path="res://Editor/images/Goblin.png" type="Texture" id=2]
+[ext_resource path="res://Editor/images/Fly.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Enemies/slime/slime_spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Enemies/bluemushroom/mushroom_spritesheet.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Enemies/bomber goblin/goblin_bomber_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Enemies/Sporeshroom/mushroom_spritesheet.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 7 )
+region = Rect2( 160, 32, 32, 32 )
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ), SubResource( 1 ), SubResource( 2 ), ExtResource( 2 ), SubResource( 3 ), ExtResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]

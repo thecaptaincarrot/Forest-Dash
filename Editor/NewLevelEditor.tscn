@@ -1,0 +1,721 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Editor/NewLevelEditor.gd" type="Script" id=1]
+[ext_resource path="res://Editor/GridGude.gd" type="Script" id=2]
+[ext_resource path="res://addons/carmel4a97.RTS_Camera2D/RTS-Camera2D.gd" type="Script" id=3]
+[ext_resource path="res://Tiles/gridtemplates.png" type="Texture" id=4]
+[ext_resource path="res://Editor/ForegroundTile.gd" type="Script" id=5]
+[ext_resource path="res://Editor/ItemPlaceholder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Editor/ItemPlaceholderSprites.tres" type="SpriteFrames" id=8]
+[ext_resource path="res://MovingPieces/BiomeGrids/TempleBackgroundTileset.tres" type="TileSet" id=9]
+[ext_resource path="res://Editor/TrapPlaceholder.tres" type="SpriteFrames" id=10]
+[ext_resource path="res://Editor/TrapPlaceholder.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Editor/EnemyPlaceholder.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Editor/EnemyPlaceholder.tres" type="SpriteFrames" id=13]
+[ext_resource path="res://Editor/LoadPanel.gd" type="Script" id=14]
+[ext_resource path="res://MovingPieces/BiomeGrids/TempleForegroundTileset.tres" type="TileSet" id=15]
+[ext_resource path="res://MovingPieces/BiomeGrids/RockForegroundTileset.tres" type="TileSet" id=16]
+
+[sub_resource type="TileSet" id=1]
+0/name = "gridtemplates.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "gridtemplates.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 32, 32, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="NewLevelEditor" type="Node2D"]
+script = ExtResource( 1 )
+EditorItem = ExtResource( 7 )
+EditorTrap = ExtResource( 11 )
+EditorEnemy = ExtResource( 12 )
+
+[node name="Background" type="TileMap" parent="."]
+tile_set = ExtResource( 9 )
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 5 )
+background = true
+
+[node name="Background1" type="TileMap" parent="."]
+tile_set = ExtResource( 9 )
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 5 )
+background1 = true
+
+[node name="Foreground" type="TileMap" parent="."]
+tile_set = ExtResource( 16 )
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 5 )
+
+[node name="Foreground1" type="TileMap" parent="."]
+tile_set = ExtResource( 15 )
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 5 )
+
+[node name="Traps" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="InfoPanel" type="Panel" parent="HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -216.0
+margin_right = -2.0
+margin_bottom = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUD/InfoPanel"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Level Size"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="HUD/InfoPanel"]
+margin_left = 2.44348
+margin_top = 18.7336
+margin_right = 76.4435
+margin_bottom = 42.7336
+min_value = 1.0
+max_value = 99.0
+value = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clearbutton" type="Button" parent="HUD/InfoPanel"]
+margin_left = 15.8092
+margin_top = 155.887
+margin_right = 85.8092
+margin_bottom = 175.887
+text = "Clear"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="HUD/InfoPanel"]
+margin_left = 14.0
+margin_top = 183.0
+margin_right = 97.0
+margin_bottom = 207.0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousDirection" type="Button" parent="HUD/InfoPanel"]
+margin_left = 2.20544
+margin_top = 52.9269
+margin_right = 22.2054
+margin_bottom = 72.9269
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirectionText" type="Label" parent="HUD/InfoPanel"]
+margin_left = 19.6422
+margin_top = 55.0
+margin_right = 85.6422
+margin_bottom = 69.0
+text = "Right"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextDirection" type="Button" parent="HUD/InfoPanel"]
+margin_left = 83.8007
+margin_top = 51.4566
+margin_right = 103.801
+margin_bottom = 71.4566
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousDifficulty" type="Button" parent="HUD/InfoPanel"]
+margin_left = 6.20996
+margin_top = 121.004
+margin_right = 26.21
+margin_bottom = 141.004
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifficultyText" type="Label" parent="HUD/InfoPanel"]
+margin_left = 23.6467
+margin_top = 123.077
+margin_right = 89.6467
+margin_bottom = 137.077
+text = "Right"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextDifficulty" type="Button" parent="HUD/InfoPanel"]
+margin_left = 87.8052
+margin_top = 119.533
+margin_right = 107.806
+margin_bottom = 139.533
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flip" type="Button" parent="HUD/InfoPanel"]
+margin_left = 17.5476
+margin_top = 82.1671
+margin_right = 87.5476
+margin_bottom = 102.167
+text = "Flip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmSavePanel" type="Panel" parent="HUD"]
+visible = false
+margin_left = 334.0
+margin_top = 241.0
+margin_right = 665.0
+margin_bottom = 359.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="HUD/ConfirmSavePanel"]
+margin_left = 28.7
+margin_top = 12.1
+margin_right = 295.7
+margin_bottom = 36.1
+text = "Level Name"
+
+[node name="CommitButton" type="Button" parent="HUD/ConfirmSavePanel"]
+margin_left = 78.8755
+margin_top = 44.8552
+margin_right = 174.875
+margin_bottom = 64.8552
+text = "save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="HUD/ConfirmSavePanel"]
+margin_left = 189.44
+margin_top = 45.0407
+margin_right = 273.44
+margin_bottom = 65.0407
+text = "cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="HUD/ConfirmSavePanel"]
+margin_left = 21.6659
+margin_top = 34.8203
+margin_right = 45.6659
+margin_bottom = 58.8203
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUD/ConfirmSavePanel/CheckBox"]
+margin_left = -10.0592
+margin_top = 20.8922
+margin_right = 34.9408
+margin_bottom = 34.8922
+text = "Special"
+
+[node name="FlipCheck" type="CheckBox" parent="HUD/ConfirmSavePanel"]
+margin_left = 289.395
+margin_top = 34.0465
+margin_right = 313.395
+margin_bottom = 58.0465
+
+[node name="Label" type="Label" parent="HUD/ConfirmSavePanel/FlipCheck"]
+margin_left = -8.51166
+margin_top = 20.8922
+margin_right = 38.4883
+margin_bottom = 51.8922
+text = "Save
+Flipped"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Element" type="TabContainer" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -158.0
+margin_right = 304.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tiles" type="Panel" parent="HUD/Element"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Layer" type="Label" parent="HUD/Element/Tiles"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -148.0
+margin_right = 148.0
+margin_bottom = 14.0
+text = "Layer"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousLayer" type="Button" parent="HUD/Element/Tiles"]
+margin_left = 65.0
+margin_top = 25.0
+margin_right = 85.0
+margin_bottom = 45.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayerText" type="Label" parent="HUD/Element/Tiles"]
+anchor_right = 1.0
+margin_left = 1.805
+margin_top = 30.0
+margin_right = 1.80499
+margin_bottom = 44.0
+text = "Foreground"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextLayer" type="Button" parent="HUD/Element/Tiles"]
+margin_left = 210.0
+margin_top = 25.0
+margin_right = 230.0
+margin_bottom = 45.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Biome" type="Label" parent="HUD/Element/Tiles"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 5.77509
+margin_bottom = 19.7751
+text = "Biome"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousBiome" type="Button" parent="HUD/Element/Tiles"]
+margin_left = 65.0
+margin_top = 90.0
+margin_right = 85.0
+margin_bottom = 110.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BiomeText" type="Label" parent="HUD/Element/Tiles"]
+anchor_right = 1.0
+margin_left = 77.0
+margin_top = 95.0
+margin_right = -88.0
+margin_bottom = 109.0
+text = "Forest"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextBiome" type="Button" parent="HUD/Element/Tiles"]
+margin_left = 210.0
+margin_top = 90.0
+margin_right = 230.0
+margin_bottom = 110.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HUD/Element/Tiles"]
+margin_left = 20.0
+margin_top = 54.0
+margin_right = 77.0
+margin_bottom = 78.0
+text = "recave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OopsButton" type="Button" parent="HUD/Element/Tiles"]
+margin_left = 228.0
+margin_top = 54.0
+margin_right = 284.0
+margin_bottom = 74.0
+text = "Oops"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemies" type="Panel" parent="HUD/Element"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="PreviousEnemy" type="Button" parent="HUD/Element/Enemies"]
+margin_left = 77.2128
+margin_top = 11.9838
+margin_right = 104.213
+margin_bottom = 50.9838
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemySprite" type="AnimatedSprite" parent="HUD/Element/Enemies"]
+position = Vector2( 144.083, 29.6227 )
+frames = ExtResource( 13 )
+
+[node name="NextEnemy" type="Button" parent="HUD/Element/Enemies"]
+margin_left = 185.73
+margin_top = 11.6141
+margin_right = 212.73
+margin_bottom = 50.6141
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyName" type="Label" parent="HUD/Element/Enemies"]
+margin_left = 86.1975
+margin_top = 66.7751
+margin_right = 195.198
+margin_bottom = 80.7751
+text = "Mushroom"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousBehaviour" type="Button" parent="HUD/Element/Enemies"]
+margin_left = 57.7599
+margin_top = 92.0551
+margin_right = 77.7599
+margin_bottom = 112.055
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BehaviourLabel" type="Label" parent="HUD/Element/Enemies"]
+margin_left = 86.1975
+margin_top = 94.7526
+margin_right = 195.198
+margin_bottom = 108.753
+text = "Walk Left"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextBehaviour" type="Button" parent="HUD/Element/Enemies"]
+margin_left = 205.77
+margin_top = 91.1525
+margin_right = 225.77
+margin_bottom = 111.153
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Panel" parent="HUD/Element"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="NextItem" type="Button" parent="HUD/Element/Items"]
+margin_left = 196.26
+margin_top = 38.0225
+margin_right = 224.26
+margin_bottom = 75.0225
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSprite" type="AnimatedSprite" parent="HUD/Element/Items"]
+position = Vector2( 141.537, 48.0566 )
+scale = Vector2( 1.5, 1.5 )
+frames = ExtResource( 8 )
+
+[node name="PreviousItem" type="Button" parent="HUD/Element/Items"]
+margin_left = 61.9689
+margin_top = 36.2733
+margin_right = 90.9689
+margin_bottom = 73.2733
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemLabel" type="Label" parent="HUD/Element/Items"]
+margin_left = 83.685
+margin_top = 89.0225
+margin_right = 195.685
+margin_bottom = 103.022
+text = "Coin"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Traps" type="Panel" parent="HUD/Element"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="NextTrap" type="Button" parent="HUD/Element/Traps"]
+margin_left = 199.87
+margin_top = 19.07
+margin_right = 227.87
+margin_bottom = 56.07
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TrapSprite" type="AnimatedSprite" parent="HUD/Element/Traps"]
+position = Vector2( 147.468, 34.5207 )
+frames = ExtResource( 10 )
+
+[node name="PreviousTrap" type="Button" parent="HUD/Element/Traps"]
+margin_left = 63.2576
+margin_top = 19.6422
+margin_right = 92.2576
+margin_bottom = 56.6422
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TrapLabel" type="Label" parent="HUD/Element/Traps"]
+margin_left = 87.295
+margin_top = 70.07
+margin_right = 199.295
+margin_bottom = 84.07
+text = "Spikes"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousOrientation" type="Button" parent="HUD/Element/Traps"]
+margin_left = 59.5649
+margin_top = 96.5675
+margin_right = 79.5649
+margin_bottom = 116.568
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Orientation" type="Label" parent="HUD/Element/Traps"]
+margin_left = 88.0025
+margin_top = 99.265
+margin_right = 197.003
+margin_bottom = 113.265
+text = "0°"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextOrientation" type="Button" parent="HUD/Element/Traps"]
+margin_left = 207.575
+margin_top = 95.665
+margin_right = 227.575
+margin_bottom = 115.665
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadPanel" type="Panel" parent="HUD"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -94.0
+margin_right = 98.0
+margin_bottom = 160.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollapseButton" type="Button" parent="HUD/LoadPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -54.5
+margin_right = 54.5
+margin_bottom = 20.0
+text = "^"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/LoadPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_right = -2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="VBoxContainer" parent="HUD/LoadPanel/ScrollContainer"]
+
+[node name="Quit" type="Panel" parent="HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -44.0
+margin_right = 128.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUD/Quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -24.0
+margin_right = 64.0
+margin_bottom = -10.0
+text = "Back to Main Menu?"
+
+[node name="Yes" type="Button" parent="HUD/Quit"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 88.0
+margin_bottom = 52.0
+text = "Yes"
+
+[node name="No" type="Button" parent="HUD/Quit"]
+margin_left = 168.0
+margin_top = 32.0
+margin_right = 224.0
+margin_bottom = 52.0
+text = "No"
+
+[node name="GridGude" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 3 )
+camera_speed = 500
+[connection signal="value_changed" from="HUD/InfoPanel/SpinBox" to="." method="_on_SpinBox_value_changed"]
+[connection signal="pressed" from="HUD/InfoPanel/clearbutton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="HUD/InfoPanel/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="HUD/InfoPanel/PreviousDirection" to="." method="_on_PreviousDirection_pressed"]
+[connection signal="pressed" from="HUD/InfoPanel/NextDirection" to="." method="_on_NextDirection_pressed"]
+[connection signal="pressed" from="HUD/InfoPanel/PreviousDifficulty" to="." method="_on_PreviousDifficulty_pressed"]
+[connection signal="pressed" from="HUD/InfoPanel/NextDifficulty" to="." method="_on_NextDifficulty_pressed"]
+[connection signal="pressed" from="HUD/InfoPanel/Flip" to="." method="_on_Flip_pressed"]
+[connection signal="pressed" from="HUD/ConfirmSavePanel/CommitButton" to="." method="_on_CommitButton_pressed"]
+[connection signal="pressed" from="HUD/ConfirmSavePanel/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="tab_changed" from="HUD/Element" to="." method="_on_Element_tab_changed"]
+[connection signal="pressed" from="HUD/Element/Tiles/PreviousLayer" to="." method="previous_layer"]
+[connection signal="pressed" from="HUD/Element/Tiles/NextLayer" to="." method="next_layer"]
+[connection signal="pressed" from="HUD/Element/Tiles/PreviousBiome" to="." method="previous_biome"]
+[connection signal="pressed" from="HUD/Element/Tiles/NextBiome" to="." method="next_biome"]
+[connection signal="pressed" from="HUD/Element/Tiles/Button" to="." method="_on_recave_pressed"]
+[connection signal="pressed" from="HUD/Element/Tiles/OopsButton" to="." method="_on_OopsButton_pressed"]
+[connection signal="pressed" from="HUD/Element/Enemies/PreviousEnemy" to="." method="previous_enemy"]
+[connection signal="pressed" from="HUD/Element/Enemies/NextEnemy" to="." method="next_enemy"]
+[connection signal="pressed" from="HUD/Element/Enemies/PreviousBehaviour" to="." method="previous_behaviour"]
+[connection signal="pressed" from="HUD/Element/Enemies/NextBehaviour" to="." method="next_behaviour"]
+[connection signal="pressed" from="HUD/Element/Items/NextItem" to="." method="_on_NextItem_pressed"]
+[connection signal="pressed" from="HUD/Element/Items/PreviousItem" to="." method="_on_PreviousItem_pressed"]
+[connection signal="pressed" from="HUD/Element/Traps/NextTrap" to="." method="next_trap"]
+[connection signal="pressed" from="HUD/Element/Traps/PreviousTrap" to="." method="previous_trap"]
+[connection signal="pressed" from="HUD/Element/Traps/PreviousOrientation" to="." method="derotate_trap"]
+[connection signal="pressed" from="HUD/Element/Traps/NextOrientation" to="." method="rotate_trap"]
+[connection signal="load_signal" from="HUD/LoadPanel" to="." method="load_level"]
+[connection signal="pressed" from="HUD/LoadPanel/CollapseButton" to="HUD/LoadPanel" method="collapse"]
+[connection signal="pressed" from="HUD/Quit/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="HUD/Quit/No" to="." method="_on_No_pressed"]

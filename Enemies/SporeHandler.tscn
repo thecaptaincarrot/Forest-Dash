@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemies/Spore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SporePathFollow.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/SporeHandler.gd" type="Script" id=3]
+[ext_resource path="res://Enemies/PathFollow22D.gd" type="Script" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, -27.1113, 0.640433, 27.1113, -0.640433, 32, -128, 0, 0, 0, 0, 96, 576 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, -38.3587, 0.407736, 38.3587, -0.407736, 64, -64, 0, 0, 0, 0, 192, 640 )
+}
+
+[node name="SporeHandler" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotate = false
+script = ExtResource( 2 )
+
+[node name="Spore" parent="Path2D/PathFollow2D" instance=ExtResource( 1 )]
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+rotate = false
+script = ExtResource( 4 )
+
+[node name="Spore" parent="Path2D3/PathFollow2D" instance=ExtResource( 1 )]
+
+[node name="Path2D4" type="Path2D" parent="."]
+scale = Vector2( -1, 1 )
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+rotate = false
+script = ExtResource( 4 )
+
+[node name="Spore" parent="Path2D4/PathFollow2D" instance=ExtResource( 1 )]
+
+[node name="Path2D2" type="Path2D" parent="."]
+scale = Vector2( -1, 1 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+rotate = false
+script = ExtResource( 2 )
+
+[node name="Spore" parent="Path2D2/PathFollow2D" instance=ExtResource( 1 )]
+[connection signal="spore_dead" from="Path2D/PathFollow2D/Spore" to="." method="_on_Spore_spore_dead"]

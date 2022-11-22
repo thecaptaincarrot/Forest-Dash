@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WallExpose.wav-7fd877b8ab5d526fe08e5bdc8fe15cf5.sample"
+
+[deps]
+
+source_file="res://Sounds/WallExpose.wav"
+dest_files=[ "res://.import/WallExpose.wav-7fd877b8ab5d526fe08e5bdc8fe15cf5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

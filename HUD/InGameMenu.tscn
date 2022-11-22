@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://utils/Word.tscn" type="PackedScene" id=1]
+[ext_resource path="res://HUD/InGameMenu.gd" type="Script" id=2]
+[ext_resource path="res://HUD/OptionsPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD/QuitPanel.gd" type="Script" id=4]
+
+[node name="InGameMenu" type="Control"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
+position = Vector2( 512, 249.621 )
+word = "Resume"
+
+[node name="Options" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 298.745 )
+word = "Options"
+
+[node name="Quit" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 342.255 )
+word = "Quit"
+
+[node name="OptionsPanel" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="RefocusTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="QuitPanel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -170.5
+margin_top = -54.0
+margin_right = 170.5
+margin_bottom = 54.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Word" parent="QuitPanel" instance=ExtResource( 1 )]
+position = Vector2( 170.019, 19.3111 )
+scale = Vector2( 0.5, 0.5 )
+word = "Are you sure you want to quit?"
+
+[node name="Word2" parent="QuitPanel" instance=ExtResource( 1 )]
+position = Vector2( 171.222, 36.7898 )
+scale = Vector2( 0.4, 0.4 )
+word = "Your progress will reset to the "
+
+[node name="Word3" parent="QuitPanel" instance=ExtResource( 1 )]
+position = Vector2( 171.474, 53.8789 )
+scale = Vector2( 0.4, 0.4 )
+word = "beginning of the level"
+
+[node name="Yes" parent="QuitPanel" instance=ExtResource( 1 )]
+modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
+position = Vector2( 78.4357, 86.442 )
+scale = Vector2( 0.8, 0.8 )
+word = "yes"
+
+[node name="No" parent="QuitPanel" instance=ExtResource( 1 )]
+position = Vector2( 273.345, 88.687 )
+scale = Vector2( 0.8, 0.8 )
+word = "no"
+[connection signal="exit" from="OptionsPanel" to="." method="_on_OptionsPanel_exit"]
+[connection signal="timeout" from="RefocusTimer" to="." method="_on_RefocusTimer_timeout"]
+[connection signal="close_menu" from="QuitPanel" to="." method="_on_QuitPanel_close_menu"]

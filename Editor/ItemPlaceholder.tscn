@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Editor/ItemPlaceholderSprites.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Editor/ItemPlaceholder.gd" type="Script" id=2]
+[ext_resource path="res://Editor/EditorArea2D.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 21.629, 16.2939 )
+
+[node name="ItemPlaceholder" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+
+[node name="EditorArea2D" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EditorArea2D"]
+shape = SubResource( 1 )
+[connection signal="Unset" from="EditorArea2D" to="." method="_on_EditorArea2D_Unset"]
+[connection signal="mouse_entered" from="EditorArea2D" to="EditorArea2D" method="_on_EditorArea2D_mouse_entered"]

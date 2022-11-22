@@ -1,0 +1,164 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scripts/PlayerBody.gd" type="Script" id=1]
+[ext_resource path="res://animations/Player.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://HUD/SoundEffect.gd" type="Script" id=3]
+[ext_resource path="res://Sounds/Randomize15.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/Pickup_Coin4.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/Pickup_health.wav" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/JumpDust.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/LandingDust.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sounds/Explosion6.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sprites/SwordSlash.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sounds/Randomize4.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/Explosion17.wav" type="AudioStream" id=12]
+[ext_resource path="res://main/Jump_sound.gd" type="Script" id=13]
+[ext_resource path="res://Sounds/66_drink.wav" type="AudioStream" id=14]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 10.9273
+height = 19.6958
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10.7734, 10 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 14.4367
+height = 17.9752
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -20, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("PlayerSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Hurt", false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8.06592, 16.6057 )
+
+[node name="PlayerBody" type="KinematicBody2D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource( 1 )
+JumpDust = ExtResource( 7 )
+LandingDust = ExtResource( 8 )
+Slash = ExtResource( 10 )
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.713501, 0 )
+frames = ExtResource( 2 )
+animation = "Death"
+frame = 7
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.156799, 3.46963 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 14.23 )
+shape = SubResource( 2 )
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+visible = false
+position = Vector2( -0.340087, 0.207759 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hurt = SubResource( 4 )
+
+[node name="HurtTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="InvulnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FallThroughTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="CoyoteTime" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+
+[node name="CoyoteWalljumpTime" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="Slash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+script = ExtResource( 3 )
+
+[node name="Health" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+script = ExtResource( 3 )
+
+[node name="Coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+script = ExtResource( 3 )
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+script = ExtResource( 3 )
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="Land" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+script = ExtResource( 3 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+script = ExtResource( 13 )
+
+[node name="SlideDustTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="MomentumTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FloorDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
+position = Vector2( -0.595276, 27.5811 )
+shape = SubResource( 5 )
+
+[connection signal="animation_finished" from="PlayerSprite" to="." method="_on_PlayerSprite_animation_finished"]
+[connection signal="area_shape_entered" from="PlayerArea" to="." method="_on_Area2D_area_shape_entered"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_InvulnTimer_timeout"]
+[connection signal="timeout" from="FallThroughTimer" to="." method="_on_FallThroughTimer_timeout"]
+[connection signal="timeout" from="CoyoteTime" to="." method="_on_CoyoteTime_timeout"]
+[connection signal="timeout" from="CoyoteWalljumpTime" to="." method="_on_CoyoteWalljumpTime_timeout"]
+[connection signal="body_shape_entered" from="FloorDetector" to="." method="_on_FloorDetector_body_shape_entered"]
+[connection signal="body_shape_exited" from="FloorDetector" to="." method="_on_FloorDetector_body_shape_exited"]

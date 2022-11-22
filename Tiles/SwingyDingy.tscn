@@ -1,0 +1,115 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Sprites/Traps/trap_suspended_anim_strip_18.png" type="Texture" id=1]
+[ext_resource path="res://scripts/SwingyDingy.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 2912, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 2688, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 2464, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 2240, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 2016, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 1792, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 1568, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 1344, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 1120, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 896, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 672, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 448, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 224, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 3808, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 3584, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 3360, 0, 224, 128 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 3136, 0, 224, 128 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": false,
+"name": "SwingRight",
+"speed": 18.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "SwingLeft",
+"speed": 18.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 11.9328, 29.6569 )
+
+[node name="SwingyDingy" type="AnimatedSprite"]
+position = Vector2( 382.258, 206.829 )
+frames = SubResource( 19 )
+animation = "SwingLeft"
+frame = 8
+script = ExtResource( 2 )
+
+[node name="ReverseTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="SwingNode" type="Node2D" parent="."]
+position = Vector2( 1.0217, -27.2449 )
+
+[node name="SwingingArea" type="Area2D" parent="SwingNode"]
+position = Vector2( -0.283875, 0.802185 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwingNode/SwingingArea"]
+modulate = Color( 0, 1, 0.25098, 1 )
+position = Vector2( -0.928619, 55.2706 )
+shape = SubResource( 20 )
+[connection signal="timeout" from="ReverseTimer" to="." method="_on_ReverseTimer_timeout"]

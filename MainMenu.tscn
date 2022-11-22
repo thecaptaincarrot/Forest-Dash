@@ -1,0 +1,401 @@
+[gd_scene load_steps=57 format=2]
+
+[ext_resource path="res://Tiles/MainTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Sprites/world/save_point_anim_strip_9.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/hero/herochar_idle_anim_strip_4.png" type="Texture" id=3]
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://utils/Word.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://Music/Abstraction - Three Red Hearts - Sanctuary.wav" type="AudioStream" id=7]
+[ext_resource path="res://HUD/MainMenuOptionsPanel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://HUD/CheckpointPanel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SSlogo.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/world/NoGem.png" type="Texture" id=11]
+[ext_resource path="res://Music/Music.gd" type="Script" id=12]
+[ext_resource path="res://scripts/FadeOut.gd" type="Script" id=13]
+[ext_resource path="res://index.png" type="Texture" id=14]
+[ext_resource path="res://HUD/CreditsRoll.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Cheat/Kiki.png" type="Texture" id=16]
+[ext_resource path="res://Cheat/Barbas.png" type="Texture" id=17]
+[ext_resource path="res://Cheat/aaaaaaa.png" type="Texture" id=18]
+[ext_resource path="res://Cheat/Peeky.png" type="Texture" id=19]
+[ext_resource path="res://Cheat/Bear.png" type="Texture" id=20]
+[ext_resource path="res://Cheat/Riddle.png" type="Texture" id=21]
+[ext_resource path="res://Cheat/PetSprite.gd" type="Script" id=22]
+[ext_resource path="res://Cheat/Vi.png" type="Texture" id=23]
+[ext_resource path="res://Cheat/saf.png" type="Texture" id=25]
+[ext_resource path="res://Cheat/Teenie.png" type="Texture" id=26]
+[ext_resource path="res://Cheat/Mochi.png" type="Texture" id=27]
+[ext_resource path="res://Cheat/Charlie.png" type="Texture" id=28]
+[ext_resource path="res://Cheat/Ertugrul.png" type="Texture" id=29]
+[ext_resource path="res://Cheat/Comet.png" type="Texture" id=30]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 12, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 36, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 60, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 72, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 84, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 11 )
+region = Rect2( 12, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 11 )
+region = Rect2( 24, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 11 )
+region = Rect2( 36, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 11 )
+region = Rect2( 48, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 11 )
+region = Rect2( 60, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 11 )
+region = Rect2( 72, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 11 )
+region = Rect2( 84, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 11 )
+region = Rect2( 96, 0, 12, 20 )
+
+[sub_resource type="SpriteFrames" id=24]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 18.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "gemless",
+"speed": 18.0
+} ]
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 29 )
+region = Rect2( 0, 0, 118, 128 )
+
+[sub_resource type="SpriteFrames" id=26]
+animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 23 ), SubResource( 25 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 30 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=27]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Node2D" parent="."]
+position = Vector2( 503.931, 288.06 )
+
+[node name="StoryMode" parent="Menu" instance=ExtResource( 5 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 1.25, 1.25 )
+word = "Story"
+
+[node name="StorymodeButton" type="Button" parent="Menu/StoryMode"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -54.306
+margin_top = -10.5102
+margin_right = 55.694
+margin_bottom = 15.4898
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndlessMode" parent="Menu" instance=ExtResource( 5 )]
+position = Vector2( 0, 38.112 )
+scale = Vector2( 1.25, 1.25 )
+word = "Endless"
+
+[node name="EndlessButton" type="Button" parent="Menu/EndlessMode"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -74.2038
+margin_top = -11.2449
+margin_right = 77.7962
+margin_bottom = 14.7551
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" parent="Menu" instance=ExtResource( 5 )]
+position = Vector2( 0, 74.337 )
+scale = Vector2( 1.25, 1.25 )
+word = "Options"
+
+[node name="OptionsButton" type="Button" parent="Menu/Options"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -74.9589
+margin_top = -10.7755
+margin_right = 77.0412
+margin_bottom = 15.2245
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" parent="Menu" instance=ExtResource( 5 )]
+position = Vector2( 0, 115 )
+scale = Vector2( 1.25, 1.25 )
+word = "Credits"
+
+[node name="CreditsButton" type="Button" parent="Menu/Credits"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -70.4283
+margin_top = -11.0615
+margin_right = 81.572
+margin_bottom = 14.9385
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editor" parent="Menu" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 0, 155 )
+scale = Vector2( 1.25, 1.25 )
+word = "Editor"
+
+[node name="EditorButton" type="Button" parent="Menu/Editor"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -63.5713
+margin_top = -11.0
+margin_right = 75.4287
+margin_bottom = 15.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Exit" parent="Menu" instance=ExtResource( 5 )]
+position = Vector2( -1.537, 159.817 )
+scale = Vector2( 1.25, 1.25 )
+word = "Exit"
+
+[node name="ExitButton" type="Button" parent="Menu/Exit"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -43.0
+margin_top = -9.0
+margin_right = 44.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuElements" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forest" parent="MenuElements" instance=ExtResource( 5 )]
+position = Vector2( 512, 76.922 )
+scale = Vector2( 3, 3 )
+word = "Forest"
+
+[node name="Dash" parent="MenuElements" instance=ExtResource( 5 )]
+position = Vector2( 512, 158.751 )
+scale = Vector2( 3, 3 )
+word = "Dash"
+
+[node name="Images" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Images"]
+scale = Vector2( 4, 4 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 262144, 1, 0, 262145, 2, 0, 262158, 0, 0, 262159, 1, 0, 327680, 13, 0, 327681, 25, 0, 327682, 2, 0, 327693, 0, 0, 327694, 27, 0, 327695, 13, 0, 393216, 13, 0, 393217, 13, 0, 393218, 25, 0, 393219, 2, 0, 393228, 0, 0, 393229, 27, 0, 393230, 13, 0, 393231, 13, 0, 458752, 13, 0, 458753, 13, 0, 458754, 13, 0, 458755, 14, 0, 458764, 12, 0, 458765, 13, 0, 458766, 13, 0, 458767, 13, 0, 524288, 13, 0, 524289, 13, 0, 524290, 13, 0, 524291, 14, 0, 524300, 12, 0, 524301, 13, 0, 524302, 13, 0, 524303, 13, 0, 589824, 13, 0, 589825, 13, 0, 589826, 13, 0, 589827, 14, 0, 589836, 12, 0, 589837, 13, 0, 589838, 13, 0, 589839, 13, 0 )
+
+[node name="Hero" type="AnimatedSprite" parent="Images"]
+position = Vector2( 74.155, 210.094 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="Gem" type="AnimatedSprite" parent="Images"]
+position = Vector2( 963.357, 165.589 )
+scale = Vector2( 9, 9 )
+frames = SubResource( 24 )
+playing = true
+
+[node name="PetSprite" type="AnimatedSprite" parent="Images/Gem"]
+visible = false
+position = Vector2( 0.189697, -6.98457 )
+scale = Vector2( 0.08, 0.08 )
+frames = SubResource( 26 )
+script = ExtResource( 22 )
+
+[node name="ParallaxBackground" parent="Images" instance=ExtResource( 4 )]
+
+[node name="Windows" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CheckpointPanel" parent="Windows" instance=ExtResource( 9 )]
+visible = false
+margin_left = 183.661
+margin_top = 137.0
+margin_right = 783.661
+margin_bottom = 440.0
+
+[node name="OptionsPanel" parent="Windows" instance=ExtResource( 8 )]
+visible = false
+
+[node name="FadeOut" type="AnimationPlayer" parent="."]
+anims/FadeOut = SubResource( 27 )
+script = ExtResource( 13 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+script = ExtResource( 12 )
+PlayInstantly = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+light_mask = 0
+margin_left = -67.2161
+margin_top = -77.108
+margin_right = 1079.78
+margin_bottom = 683.892
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RefocusTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="GodotLogo" type="Sprite" parent="."]
+position = Vector2( 987.515, 564.888 )
+texture = ExtResource( 14 )
+
+[node name="SaltySquadLogo" type="Sprite" parent="."]
+position = Vector2( 895.201, 569.826 )
+scale = Vector2( 0.150741, 0.150741 )
+texture = ExtResource( 10 )
+
+[node name="CreditsRoll" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[node name="Warning" parent="." instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 508.37, 229.254 )
+scale = Vector2( 1.25, 1.25 )
+word = "Must complete Story mode"
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+[connection signal="pressed" from="Menu/StoryMode/StorymodeButton" to="." method="_on_StorymodeButton_pressed"]
+[connection signal="pressed" from="Menu/EndlessMode/EndlessButton" to="." method="_on_EndlessButton_pressed"]
+[connection signal="pressed" from="Menu/Options/OptionsButton" to="." method="options_menu"]
+[connection signal="pressed" from="Menu/Credits/CreditsButton" to="." method="credits_open"]
+[connection signal="pressed" from="Menu/Exit/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="exit" from="Windows/CheckpointPanel" to="." method="close_storymode"]
+[connection signal="level1" from="Windows/CheckpointPanel" to="." method="start_story_mode"]
+[connection signal="level2" from="Windows/CheckpointPanel" to="." method="start_level_2"]
+[connection signal="level3" from="Windows/CheckpointPanel" to="." method="start_level_3"]
+[connection signal="exit" from="Windows/OptionsPanel" to="." method="close_options"]
+[connection signal="animation_finished" from="FadeOut" to="." method="_on_FadeOut_animation_finished"]
+[connection signal="timeout" from="RefocusTimer" to="." method="_on_RefocusTimer_timeout"]
+[connection signal="credits_off" from="CreditsRoll" to="." method="_on_CreditsRoll_credits_off"]

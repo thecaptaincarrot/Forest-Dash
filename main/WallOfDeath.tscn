@@ -1,0 +1,142 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Sprites/Evilwall/WallOfDeathLine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Evilwall/BottomWallOfDeath.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/WallOfDeath.gd" type="Script" id=3]
+[ext_resource path="res://main/WallMini.gd" type="Script" id=4]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.101961, 0, 0.184314, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24.2874, 419.213 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 23.4574, 391.835 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 601.623, 26.4178 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 588.363, 20.6234 )
+
+[node name="WallOfDeath" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Left" type="Node2D" parent="."]
+script = ExtResource( 4 )
+side = "left"
+
+[node name="TextureRect" type="TextureRect" parent="Left"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 2.0
+margin_top = -11.0
+margin_right = 251.0
+margin_bottom = 609.0
+texture = SubResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WallOfDeath" parent="Left" instance=ExtResource( 1 )]
+position = Vector2( -24, 0 )
+
+[node name="DeathWallArea" type="Area2D" parent="Left/WallOfDeath"]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left/WallOfDeath/DeathWallArea"]
+position = Vector2( 10.881, 277.143 )
+shape = SubResource( 3 )
+
+[node name="Right" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="Right"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 773.948
+margin_top = 1.12247
+margin_right = 1022.95
+margin_bottom = 601.122
+texture = SubResource( 2 )
+expand = true
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WallOfDeath" parent="Right" instance=ExtResource( 1 )]
+position = Vector2( 1087.57, 0 )
+rotation = 3.14159
+scale = Vector2( 4, -4 )
+
+[node name="DeathWallArea" type="Area2D" parent="Right/WallOfDeath"]
+position = Vector2( 260.095, 2.83482 )
+rotation = 3.14159
+scale = Vector2( 0.25, -0.25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/WallOfDeath/DeathWallArea"]
+position = Vector2( 1030.62, 309.941 )
+shape = SubResource( 4 )
+
+[node name="Top" type="Node2D" parent="."]
+script = ExtResource( 4 )
+side = "top"
+
+[node name="TextureRect" type="TextureRect" parent="Top"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 1040.0
+margin_top = -7.0
+margin_right = 1162.0
+margin_bottom = 1038.0
+rect_rotation = 90.0
+texture = SubResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WallOfDeath" parent="Top" instance=ExtResource( 1 )]
+position = Vector2( 1024, -68.059 )
+rotation = 1.5708
+
+[node name="DeathWallArea" type="Area2D" parent="Top/WallOfDeath"]
+position = Vector2( 1.11901e-05, 256 )
+rotation = -1.5708
+scale = Vector2( 0.25, 0.25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top/WallOfDeath/DeathWallArea"]
+position = Vector2( 500.038, 4.99986 )
+shape = SubResource( 5 )
+
+[node name="Bottom" type="Node2D" parent="."]
+script = ExtResource( 4 )
+side = "bottom"
+
+[node name="TextureRect" type="TextureRect" parent="Bottom"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -28.0
+margin_top = 604.0
+margin_right = 82.0
+margin_bottom = 1685.0
+rect_rotation = -90.0
+texture = SubResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WallOfDeath" parent="Bottom" instance=ExtResource( 2 )]
+position = Vector2( 31.871, 620.471 )
+frame = 5
+
+[node name="DeathWallArea" type="Area2D" parent="Bottom/WallOfDeath"]
+position = Vector2( -31.871, -567.811 )
+rotation = -8.74228e-08
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/WallOfDeath/DeathWallArea"]
+position = Vector2( 507.926, 597.825 )
+shape = SubResource( 6 )

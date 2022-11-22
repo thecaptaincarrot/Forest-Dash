@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/Game.tscn" type="PackedScene" id=1]
+[ext_resource path="res://StoryMode/Level3.gd" type="Script" id=2]
+[ext_resource path="res://MovingPieces/BiomeGrids/TempleBackgroundTileset.tres" type="TileSet" id=3]
+
+[node name="Game" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Background2" parent="Map/Temple" index="1"]
+tile_set = ExtResource( 3 )
+
+[node name="Foreground1" parent="Map/Temple" index="2"]
+tile_data = PoolIntArray( 0, 0, 0 )
+
+[node name="PlayerBody" parent="." index="1"]
+position = Vector2( 465.698, 512.109 )
+
+[node name="ParallaxBackground" parent="Mover/MainCamera" index="0"]
+biome = "temple"
+
+[node name="CollisionShape2D" parent="Mover/MainCamera/StaticBody2D2" index="0"]
+position = Vector2( 13.4222, 301.637 )
+
+[node name="Number" parent="CanvasLayer/LevelAnimation/L/E/V/E2/L2" index="0"]
+frame = 3
+
+[node name="LevelEndTimer" parent="." index="5"]
+wait_time = 150.0
+[connection signal="room_constructed" from="Map" to="." method="Level_3_Room_counter"]
+
+[editable path="Map"]
+
+[editable path="Map/Forest"]
+
+[editable path="Map/Cave"]
+
+[editable path="Map/Temple"]
+
+[editable path="CanvasLayer/LevelAnimation"]
+
+[editable path="CanvasLayer/HUD"]
+
+[editable path="CanvasLayer/InGameMenu"]

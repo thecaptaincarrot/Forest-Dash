@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://utils/Word.tscn" type="PackedScene" id=1]
+[ext_resource path="res://HUD/Level3Image.png" type="Texture" id=2]
+[ext_resource path="res://HUD/CheckpointPanel.gd" type="Script" id=3]
+[ext_resource path="res://HUD/Level1Image.png" type="Texture" id=4]
+[ext_resource path="res://HUD/Level2Image.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="CheckpointPanel" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -151.5
+margin_right = 300.0
+margin_bottom = 151.5
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 133.858, 152.409 )
+scale = Vector2( 0.330605, 0.333748 )
+frames = SubResource( 1 )
+
+[node name="Level1" type="Node2D" parent="."]
+position = Vector2( 24.0416, 48.0833 )
+
+[node name="Word" parent="Level1" instance=ExtResource( 1 )]
+position = Vector2( 378.67, 3.92574 )
+word = "1:The Forest"
+
+[node name="Level2" type="Node2D" parent="."]
+position = Vector2( 23.2924, 152.965 )
+
+[node name="Word" parent="Level2" instance=ExtResource( 1 )]
+position = Vector2( 376.988, -3.6423 )
+word = "2:The Caves"
+
+[node name="Level3" type="Node2D" parent="."]
+position = Vector2( 25.8151, 253.535 )
+
+[node name="Word" parent="Level3" instance=ExtResource( 1 )]
+position = Vector2( 380.352, 4.76664 )
+word = "3:The Temple"
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Endless.gd" type="Script" id=1]
+[ext_resource path="res://main/Game.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MovingPieces/BiomeGrids/TempleBackgroundTileset.tres" type="TileSet" id=3]
+
+[node name="Game" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="Background2" parent="Map/Temple" index="1"]
+tile_set = ExtResource( 3 )
+
+[node name="L" parent="CanvasLayer/LevelAnimation" index="0"]
+position = Vector2( 1100, 300 )
+
+[node name="LevelEndTimer" parent="." index="5"]
+one_shot = false
+autostart = false
+[connection signal="room_constructed" from="Map" to="." method="endless_room_count"]
+
+[editable path="Map"]
+
+[editable path="Map/Forest"]
+
+[editable path="Map/Cave"]
+
+[editable path="Map/Temple"]
+
+[editable path="Mover/MainCamera/ParallaxBackground"]
+
+[editable path="CanvasLayer/LevelAnimation"]
+
+[editable path="CanvasLayer/HUD"]
+
+[editable path="CanvasLayer/InGameMenu"]

@@ -1,0 +1,12 @@
+{"biome":1,"difficulty":"Easy","direction":"right","name":"MushroomTower","size":3,"special":false,"type":"RoomDefinition"}
+{"index":3,"layer":0,"type":"Tile","x":0,"y":0}
+{"index":1,"layer":0,"type":"Tile","x":0,"y":18}
+{"index":3,"layer":0,"type":"Tile","x":1,"y":0}
+{"index":1,"layer":0,"type":"Tile","x":1,"y":18}
+{"index":3,"layer":0,"type":"Tile","x":2,"y":0}
+{"index":1,"layer":0,"type":"Tile","x":2,"y":18}
+{"behaviour":"idle_left","name":"Mushroom","type":"Enemy","x":48,"y":560}
+{"behaviour":"idle_left","name":"Mushroom","type":"Enemy","x":48,"y":512}
+{"behaviour":"idle_left","name":"Mushroom","type":"Enemy","x":48,"y":464}
+{"behaviour":"idle_left","name":"Mushroom","type":"Enemy","x":48,"y":416}
+{"behaviour":"idle_left","name":"Mushroom","type":"Enemy","x":48,"y":368}

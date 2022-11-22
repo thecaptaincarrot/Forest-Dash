@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://utils/Word.tscn" type="PackedScene" id=1]
+[ext_resource path="res://HUD/number_tool.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/EndlessGameOver.gd" type="Script" id=3]
+
+[node name="GameOverScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -415.499, -63.6999 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Word" parent="." instance=ExtResource( 1 )]
+position = Vector2( 504.769, 142.834 )
+scale = Vector2( 2, 2 )
+word = "Game Over"
+
+[node name="Word2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 509.056, 211.424 )
+word = "Final Score"
+
+[node name="Continue" parent="." instance=ExtResource( 1 )]
+position = Vector2( 504.769, 366.609 )
+scale = Vector2( 0.75, 0.75 )
+word = "Restart"
+
+[node name="Return" parent="." instance=ExtResource( 1 )]
+position = Vector2( 509.914, 404.334 )
+scale = Vector2( 0.75, 0.75 )
+word = "return to Menu"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Cheated" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 516.732, 122.127 )
+word = "You cheated not only the game, but yourself."
+
+[node name="Word" parent="Cheated" instance=ExtResource( 1 )]
+position = Vector2( 1.4981, 27.0883 )
+word = "You didn't grow. You didnt improve. You"
+
+[node name="Word2" parent="Cheated" instance=ExtResource( 1 )]
+position = Vector2( 4.4981, 57.0883 )
+word = "took a shortcut and gained nothing. You"
+
+[node name="Word3" parent="Cheated" instance=ExtResource( 1 )]
+position = Vector2( 2.4981, 84.0883 )
+word = "experienced a hollow victory. Nothing"
+
+[node name="Word4" parent="Cheated" instance=ExtResource( 1 )]
+position = Vector2( 2.4981, 113.088 )
+word = "was risked and nothing was gained."
+
+[node name="Word5" parent="Cheated" instance=ExtResource( 1 )]
+position = Vector2( -0.5019, 143.088 )
+word = "It's sad that you don't know the"
+
+[node name="Word6" parent="Cheated" instance=ExtResource( 1 )]
+position = Vector2( -0.5019, 169.088 )
+word = "difference."
+
+[node name="Number" parent="." instance=ExtResource( 2 )]
+position = Vector2( 508.047, 254.87 )
+scale = Vector2( 1.5, 1.5 )
+number = 0
+
+[node name="previous" parent="." instance=ExtResource( 1 )]
+position = Vector2( 412.303, 300.087 )
+word = "Previous Best:"
+
+[node name="Number" parent="previous" instance=ExtResource( 2 )]
+position = Vector2( 231.249, -0.943878 )
+number = 0
+
+[node name="newhigh" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 507.197, 324.797 )
+word = "New High Score!"
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

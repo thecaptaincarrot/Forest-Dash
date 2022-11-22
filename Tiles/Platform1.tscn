@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/world/Platforms/platform1.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17.8912, 4.60255 )
+
+[node name="Platform" type="StaticBody2D"]
+collision_layer = 6
+collision_mask = 6
+
+[node name="PlatformSprite" type="Sprite" parent="."]
+position = Vector2( -0.196865, 8.032 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0516224, 4.59262 )
+shape = SubResource( 1 )
+one_way_collision = true

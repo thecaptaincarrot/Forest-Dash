@@ -1,0 +1,20 @@
+{"biome":1,"difficulty":"Easy","direction":"left","name":"Jumple shroom","size":5,"special":false,"type":"RoomDefinition"}
+{"index":3,"layer":0,"type":"Tile","x":0,"y":0}
+{"index":1,"layer":0,"type":"Tile","x":0,"y":18}
+{"index":3,"layer":0,"type":"Tile","x":1,"y":0}
+{"index":8,"layer":0,"type":"Tile","x":1,"y":16}
+{"index":4,"layer":0,"type":"Tile","x":1,"y":17}
+{"index":10,"layer":0,"type":"Tile","x":1,"y":18}
+{"index":3,"layer":0,"type":"Tile","x":2,"y":0}
+{"index":8,"layer":0,"type":"Tile","x":2,"y":15}
+{"index":10,"layer":0,"type":"Tile","x":2,"y":16}
+{"index":0,"layer":0,"type":"Tile","x":2,"y":17}
+{"index":0,"layer":0,"type":"Tile","x":2,"y":18}
+{"index":3,"layer":0,"type":"Tile","x":3,"y":0}
+{"index":5,"layer":0,"type":"Tile","x":3,"y":15}
+{"index":2,"layer":0,"type":"Tile","x":3,"y":16}
+{"index":2,"layer":0,"type":"Tile","x":3,"y":17}
+{"index":11,"layer":0,"type":"Tile","x":3,"y":18}
+{"index":3,"layer":0,"type":"Tile","x":4,"y":0}
+{"index":1,"layer":0,"type":"Tile","x":4,"y":18}
+{"behaviour":"jump_in_place","name":"Blue Mushroom","type":"Enemy","x":96,"y":448}

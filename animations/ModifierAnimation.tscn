@@ -1,0 +1,300 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://HUD/Letters.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Bouncy"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ModifierAnimation/BOUNCY:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.8, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1200, 300 ), Vector2( 400, 300 ), Vector2( 400, 300 ), Vector2( -500, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ModifierAnimation/BOUNCY:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ), Vector2( 3, 3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ModifierAnimation/BOUNCY:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Gravity"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ModifierAnimation/REVERSE:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.7, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1200, 300 ), Vector2( 350, 300 ), Vector2( 350, 300 ), Vector2( -500, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ModifierAnimation/REVERSE:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.501961, 0, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ModifierAnimation/REVERSE:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ), Vector2( 3, 3 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Ice"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ModifierAnimation/ICE:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.7, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1200, 300 ), Vector2( 400, 300 ), Vector2( 400, 300 ), Vector2( -500, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ModifierAnimation/ICE:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ), Vector2( 3, 3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ModifierAnimation/ICE:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.952941, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="ModifierAnimation" type="AnimationPlayer"]
+anims/Bouncy = SubResource( 1 )
+anims/Gravity = SubResource( 2 )
+anims/Ice = SubResource( 3 )
+
+[node name="REVERSE" parent="." instance=ExtResource( 1 )]
+position = Vector2( -500, 300 )
+frame = 16
+
+[node name="E" parent="REVERSE" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 4
+
+[node name="V" parent="REVERSE/E" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 20
+
+[node name="E" parent="REVERSE/E/V" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 4
+
+[node name="R" parent="REVERSE/E/V/E" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 16
+
+[node name="S" parent="REVERSE/E/V/E/R" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 17
+
+[node name="E" parent="REVERSE/E/V/E/R/S" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 4
+
+[node name="GRAVITY" parent="REVERSE/E/V/E/R/S/E" instance=ExtResource( 1 )]
+position = Vector2( 16, 0 )
+scale = Vector2( 1, 1 )
+frame = 6
+
+[node name="R" parent="REVERSE/E/V/E/R/S/E/GRAVITY" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 16
+
+[node name="A" parent="REVERSE/E/V/E/R/S/E/GRAVITY/R" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+
+[node name="V" parent="REVERSE/E/V/E/R/S/E/GRAVITY/R/A" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 20
+
+[node name="I" parent="REVERSE/E/V/E/R/S/E/GRAVITY/R/A/V" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 8
+
+[node name="T" parent="REVERSE/E/V/E/R/S/E/GRAVITY/R/A/V/I" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 18
+
+[node name="Y" parent="REVERSE/E/V/E/R/S/E/GRAVITY/R/A/V/I/T" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 22
+
+[node name="BOUNCY" parent="." instance=ExtResource( 1 )]
+position = Vector2( -500, 300 )
+frame = 1
+
+[node name="O" parent="BOUNCY" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 14
+
+[node name="U" parent="BOUNCY/O" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 19
+
+[node name="N" parent="BOUNCY/O/U" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 13
+
+[node name="C" parent="BOUNCY/O/U/N" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 2
+
+[node name="Y" parent="BOUNCY/O/U/N/C" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 22
+
+[node name="SHOES" parent="BOUNCY/O/U/N/C/Y" instance=ExtResource( 1 )]
+position = Vector2( 16, 0 )
+scale = Vector2( 1, 1 )
+frame = 17
+
+[node name="H" parent="BOUNCY/O/U/N/C/Y/SHOES" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 7
+
+[node name="O" parent="BOUNCY/O/U/N/C/Y/SHOES/H" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 14
+
+[node name="E" parent="BOUNCY/O/U/N/C/Y/SHOES/H/O" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 4
+
+[node name="S" parent="BOUNCY/O/U/N/C/Y/SHOES/H/O/E" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 17
+
+[node name="ICE" parent="." instance=ExtResource( 1 )]
+position = Vector2( -500, 300 )
+scale = Vector2( 3, 3 )
+frame = 8
+
+[node name="C" parent="ICE" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 2
+
+[node name="E" parent="ICE/C" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 4
+
+[node name="PHYSICS" parent="ICE/C/E" instance=ExtResource( 1 )]
+position = Vector2( 16, 0 )
+scale = Vector2( 1, 1 )
+frame = 15
+
+[node name="H" parent="ICE/C/E/PHYSICS" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 7
+
+[node name="Y" parent="ICE/C/E/PHYSICS/H" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 22
+
+[node name="S" parent="ICE/C/E/PHYSICS/H/Y" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 17
+
+[node name="I" parent="ICE/C/E/PHYSICS/H/Y/S" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 8
+
+[node name="C" parent="ICE/C/E/PHYSICS/H/Y/S/I" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 2
+
+[node name="S" parent="ICE/C/E/PHYSICS/H/Y/S/I/C" instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+scale = Vector2( 1, 1 )
+frame = 17

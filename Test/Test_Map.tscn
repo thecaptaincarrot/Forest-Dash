@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://MovingPieces/BiomeGrids/GrassForegroundTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://MovingPieces/BiomeGrid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Test/sprite_count_test.gd" type="Script" id=4]
+[ext_resource path="res://Enemies/Mushroom.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/BlueMushroom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Tiles/Hidden Spikes.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/Slime.tscn" type="PackedScene" id=8]
+[ext_resource path="res://MovingPieces/BiomeGrids/DirtBackgroundTileset.tres" type="TileSet" id=9]
+[ext_resource path="res://Enemies/SporeMushroom.tscn" type="PackedScene" id=10]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+Mushroom = ExtResource( 5 )
+
+[node name="BiomeGrid" parent="." instance=ExtResource( 2 )]
+
+[node name="Background1" parent="BiomeGrid" index="0"]
+tile_set = ExtResource( 9 )
+
+[node name="Foreground1" parent="BiomeGrid" index="2"]
+tile_set = ExtResource( 1 )
+tile_data = PoolIntArray( 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 3, 0, 8, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 3, 0, 15, 3, 0, 16, 3, 0, 17, 3, 0, 18, 3, 0, 19, 3, 0, 20, 3, 0, 21, 3, 0, 22, 3, 0, 23, 3, 0, 24, 3, 0, 25, 3, 0, 26, 3, 0, 27, 3, 0, 28, 3, 0, 29, 3, 0, 30, 3, 0, 31, 3, 0, 65539, 0, 0, 65540, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 65552, 0, 0, 65560, 0, 0, 65561, 0, 0, 65562, 0, 0, 131075, 0, 0, 131076, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131096, 0, 0, 131097, 0, 0, 131098, 0, 0, 196611, 0, 0, 196612, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 262147, 0, 0, 262148, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262168, 0, 0, 262169, 0, 0, 262170, 0, 0, 327683, 0, 0, 327684, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 393219, 0, 0, 393220, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 458755, 0, 0, 458756, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 524291, 0, 0, 524292, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524319, 0, 0, 589827, 0, 0, 589828, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 655363, 0, 0, 655364, 0, 0, 655377, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 720899, 0, 0, 720900, 0, 0, 720905, 0, 0, 720906, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720920, 0, 0, 720921, 0, 0, 720922, 0, 0, 786435, 0, 0, 786436, 0, 0, 786441, 0, 0, 786442, 0, 0, 786449, 0, 0, 786456, 0, 0, 786457, 0, 0, 786458, 0, 0, 851971, 0, 0, 851972, 0, 0, 851977, 0, 0, 851978, 0, 0, 851992, 0, 0, 851993, 0, 0, 851994, 0, 0, 917507, 0, 0, 917508, 0, 0, 917513, 0, 0, 917514, 0, 0, 917528, 0, 0, 917529, 0, 0, 917530, 0, 0, 983043, 0, 0, 983044, 0, 0, 983049, 0, 0, 983050, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 1048579, 0, 0, 1048580, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1179648, 1, 0, 1179649, 1, 0, 1179650, 1, 0, 1179651, 1, 0, 1179652, 1, 0, 1179653, 1, 0, 1179654, 1, 0, 1179655, 1, 0, 1179656, 1, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 1, 0, 1179666, 1, 0, 1179667, 1, 0, 1179668, 1, 0, 1179669, 1, 0, 1179670, 1, 0, 1179671, 1, 0, 1179672, 1, 0, 1179673, 1, 0, 1179674, 1, 0, 1179675, 1, 0, 1179676, 1, 0, 1179677, 1, 0, 1179678, 1, 0, 1179679, 1, 0 )
+
+[node name="PlayerBody" parent="." instance=ExtResource( 3 )]
+position = Vector2( 463, 432 )
+direction = "up"
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 1000, 529 )
+
+[node name="MushroomBody" parent="." instance=ExtResource( 6 )]
+position = Vector2( 712.679, 515.125 )
+behaviour = "jump_in_place"
+
+[node name="HiddenSpikes" parent="." instance=ExtResource( 7 )]
+position = Vector2( 624, 560 )
+
+[node name="HiddenSpikes2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 656, 560 )
+
+[node name="HiddenSpikes3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 592, 560 )
+
+[node name="Slime4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 548.385, 302.424 )
+behaviour = "walk_right"
+
+[node name="MushroomBody2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 320.111, 328.415 )
+behaviour = "spore_shoot"
+
+[editable path="BiomeGrid"]

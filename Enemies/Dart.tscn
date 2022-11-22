@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/Enemies/bomber goblin/Dart.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/Dart.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 5.18679, 2.07044 )
+
+[node name="Dart" type="AnimatedSprite"]
+position = Vector2( 168.56, 72.2933 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+script = ExtResource( 2 )
+
+[node name="TrapArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrapArea"]
+position = Vector2( -2.08111, -1.04055 )
+shape = SubResource( 6 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="area_shape_entered" from="TrapArea" to="." method="_on_TrapArea_area_shape_entered"]
+[connection signal="body_shape_entered" from="TrapArea" to="." method="_on_TrapArea_body_shape_entered"]
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

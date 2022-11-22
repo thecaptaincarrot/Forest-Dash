@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/66_drink.wav-b055e9039b480f8f11ce3b00e2640b68.sample"
+
+[deps]
+
+source_file="res://Sounds/66_drink.wav"
+dest_files=[ "res://.import/66_drink.wav-b055e9039b480f8f11ce3b00e2640b68.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

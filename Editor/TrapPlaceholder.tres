@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=2]
+
+[ext_resource path="res://Editor/images/SwingTrap.png" type="Texture" id=1]
+[ext_resource path="res://Editor/images/spikes.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/world/Platforms/platform4.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/world/Platforms/platform3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/world/Platforms/platform1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/world/Platforms/platform2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/world/Platforms/platform5.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Traps/trap_spikes_anim_strip_7.png" type="Texture" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 8 )
+region = Rect2( 224, 0, 32, 42 )
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 2 ), SubResource( 1 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]

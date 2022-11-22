@@ -1,0 +1,215 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://main/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Mover.gd" type="Script" id=2]
+[ext_resource path="res://HUD/InGameMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Music/Abstraction - Three Red Hearts - Out of Time.wav" type="AudioStream" id=6]
+[ext_resource path="res://Music/Music.gd" type="Script" id=7]
+[ext_resource path="res://main/WallOfDeath.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=10]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Tiles/WoodenPlatform.tscn" type="PackedScene" id=14]
+[ext_resource path="res://MovingPieces/BiomeGrids/DirtBackgroundTileset.tres" type="TileSet" id=19]
+[ext_resource path="res://animations/Level_Animation.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/instructions.gd" type="Script" id=22]
+[ext_resource path="res://MovingPieces/BiomeGrids/RockForegroundTileset.tres" type="TileSet" id=23]
+[ext_resource path="res://MovingPieces/Map.tscn" type="PackedScene" id=24]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 618.331, 8.60474 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1071.26, 18.8583 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeToBlack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "FadeToWhite"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="Map" parent="." instance=ExtResource( 24 )]
+Platform = ExtResource( 14 )
+
+[node name="Background1" parent="Map/Cave" index="0"]
+tile_set = ExtResource( 19 )
+
+[node name="Foreground1" parent="Map/Cave" index="2"]
+tile_set = ExtResource( 23 )
+
+[node name="PlayerBody" parent="." instance=ExtResource( 1 )]
+position = Vector2( 515.87, 310.865 )
+
+[node name="Mover" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="MainCamera" type="Camera2D" parent="Mover"]
+anchor_mode = 0
+current = true
+
+[node name="ParallaxBackground" parent="Mover/MainCamera" instance=ExtResource( 4 )]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Mover/MainCamera"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/MainCamera/StaticBody2D"]
+position = Vector2( 1032.53, 320.05 )
+rotation = 4.71239
+shape = SubResource( 1 )
+one_way_collision = true
+one_way_collision_margin = 3.5
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Mover/MainCamera"]
+collision_layer = 2147483652
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/MainCamera/StaticBody2D2"]
+position = Vector2( -10.2949, 314.302 )
+rotation = 1.5708
+shape = SubResource( 1 )
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Mover/MainCamera"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/MainCamera/StaticBody2D3"]
+position = Vector2( 417.192, 673.926 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Mover/MainCamera"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/MainCamera/StaticBody2D4"]
+position = Vector2( 539.342, -9.94728 )
+rotation = 3.14159
+shape = SubResource( 1 )
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="WallOfDeath" parent="Mover" instance=ExtResource( 8 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelAnimation" parent="CanvasLayer" instance=ExtResource( 20 )]
+
+[node name="L" parent="CanvasLayer/LevelAnimation" index="0"]
+visible = false
+scale = Vector2( 3.42857, 3.42857 )
+
+[node name="FadeOut" type="AnimationPlayer" parent="CanvasLayer"]
+anims/FadeToBlack = SubResource( 3 )
+anims/FadeToWhite = SubResource( 4 )
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 11 )]
+
+[node name="GridContainer" parent="CanvasLayer/HUD/MainHUD" index="2"]
+visible = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_left = 0.950073
+margin_right = 1024.95
+margin_bottom = 601.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 104.0
+margin_top = 410.0
+margin_right = 307.0
+margin_bottom = 458.0
+text = "Arrow keys to move
+Z to Jump
+X to Atack"
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="instructiontimer" type="Timer" parent="CanvasLayer/Label"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="InGameMenu" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="LevelEndTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+script = ExtResource( 7 )
+PlayInstantly = true
+[connection signal="cheat" from="." to="CanvasLayer/HUD" method="_on_Game_cheat"]
+[connection signal="direction_change" from="." to="PlayerBody" method="_on_Game_direction_change"]
+[connection signal="direction_change" from="." to="Mover/WallOfDeath" method="_on_Game_direction_change"]
+[connection signal="direction_change" from="." to="Mover" method="_on_Game_direction_change"]
+[connection signal="update_speed" from="." to="Mover" method="_on_Game_update_speed"]
+[connection signal="room_constructed" from="Map" to="." method="_on_Map_room_constructed"]
+[connection signal="ChestCollect" from="PlayerBody" to="." method="_on_PlayerBody_ChestCollect"]
+[connection signal="CoinCollect" from="PlayerBody" to="." method="_on_PlayerBody_CoinCollect"]
+[connection signal="Heal" from="PlayerBody" to="." method="_on_PlayerBody_Heal"]
+[connection signal="dead" from="PlayerBody" to="." method="_on_PlayerBody_dead"]
+[connection signal="hurt" from="PlayerBody" to="." method="_on_PlayerBody_hurt"]
+[connection signal="animation_finished" from="CanvasLayer/FadeOut" to="." method="_on_FadeOut_animation_finished"]
+[connection signal="timeout" from="CanvasLayer/Label/instructiontimer" to="CanvasLayer/Label" method="_on_instructiontimer_timeout"]
+[connection signal="exit_menu" from="CanvasLayer/InGameMenu" to="." method="_on_InGameMenu_exit_menu"]
+[connection signal="quit_game" from="CanvasLayer/InGameMenu/QuitPanel" to="." method="_on_QuitPanel_quit_game"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="LevelEndTimer" to="." method="go_to_caves"]
+
+[editable path="Map"]
+
+[editable path="Map/Forest"]
+
+[editable path="Map/Cave"]
+
+[editable path="CanvasLayer/LevelAnimation"]
+
+[editable path="CanvasLayer/HUD"]
+
+[editable path="CanvasLayer/InGameMenu"]

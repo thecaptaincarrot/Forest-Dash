@@ -1,0 +1,674 @@
+[gd_scene load_steps=90 format=2]
+
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://cutscenes/EndCutscene.gd" type="Script" id=2]
+[ext_resource path="res://animations/Player.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://MovingPieces/BiomeGrids/TempleForegroundTileset.tres" type="TileSet" id=4]
+[ext_resource path="res://Sprites/world/strange_door_closed_anim_strip_10.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/world/strange_door_opening_anim_strip_14.png" type="Texture" id=6]
+[ext_resource path="res://MovingPieces/BiomeGrid.tscn" type="PackedScene" id=7]
+[ext_resource path="res://MovingPieces/BiomeGrids/TempleBackgroundTileset.tres" type="TileSet" id=8]
+[ext_resource path="res://Sprites/Evilwall/WallOfDeathLine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sprites/world/NoGem.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Evilwall/BottomWallOfDeath.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Sprites/world/Crystal.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/world/save_point_anim_strip_9.png" type="Texture" id=13]
+[ext_resource path="res://Music/Music.gd" type="Script" id=14]
+[ext_resource path="res://Music/Abstraction - Three Red Hearts - Sanctuary.wav" type="AudioStream" id=15]
+[ext_resource path="res://HUD/SoundEffect.gd" type="Script" id=16]
+[ext_resource path="res://Sounds/Explosion6.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sounds/66_drink.wav" type="AudioStream" id=18]
+[ext_resource path="res://Sounds/rumble.wav" type="AudioStream" id=19]
+[ext_resource path="res://Sounds/Powerup9.wav" type="AudioStream" id=20]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1824, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Door:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "Open", "Close", "Closed" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Door2:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 16.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Closed", "Open" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeftWall:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4.2, 7.9, 16.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -78.3991, -169.271 ), Vector2( -78.3991, -169.271 ), Vector2( 1739.99, -169.271 ), Vector2( 2139.99, -169.271 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.1, 3.9, 4.4, 5.8, 7.9, 8.9, 9.2, 9.6, 9.7, 9.9, 18, 18.2, 18.3, 18.8, 19.1, 22.8, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 96, 512 ), Vector2( 2020.31, 516.916 ), Vector2( 2020.31, 516.916 ), Vector2( 1860, 516.916 ), Vector2( 1860, 516.916 ), Vector2( 2700.07, 516.916 ), Vector2( 2700.07, 516.916 ), Vector2( 2550, 516.916 ), Vector2( 2450, 200 ), Vector2( 2400, 240 ), Vector2( 2325, 240 ), Vector2( 2325, 240 ), Vector2( 2400, 240 ), Vector2( 2450, 200 ), Vector2( 2550, 516 ), Vector2( 2650, 516 ), Vector2( 2650, 516 ), Vector2( 3000, 516 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Player:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.1, 3.9, 4.4, 5.4, 5.8, 7.9, 8.8, 8.9, 9.2, 9.6, 9.7, 9.9, 13.3, 14.9, 18, 18.2, 18.3, 18.8, 19.1, 20.8, 22.4, 22.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Run", "Idle", "Run", "Push", "Idle", "Run", "Push", "Idle", "Run", "Jumping", "Falling", "Run", "Idle", "LookUp", "Idle", "Run", "Jumping", "Falling", "Run", "Idle", "LookUp", "Idle", "Run" ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Player:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.4, 5.8, 8.9, 10.2, 10.6, 11, 11.4, 11.8, 13.9, 17.2, 20.4, 22.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true, false, true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("BottomWallOfDeath:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 7.9, 16.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1856, 637.811 ), Vector2( 1856, 637.811 ), Vector2( 1856, 300 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("TopWall:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 7.9, 16.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2930, -72 ), Vector2( 2930, -72 ), Vector2( 2930, 30 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("RightWall:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 7.9, 16.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2940, -261.291 ), Vector2( 2940, -261.291 ), Vector2( 2490, -261.291 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("gem:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 12, 12.9, 13.4, 14.4, 14.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2376, 240 ), Vector2( 2376, 240 ), Vector2( 2450, 240 ), Vector2( 2450, 150 ), Vector2( 2272, 150 ), Vector2( 2272, 190 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("gem:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 12, 15.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("ColorRect:color")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 15.4, 15.8, 16, 16.4, 19.7, 22.8, 24.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("LeftWall:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RightWall:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 15.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("TopWall:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 15.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("BottomWallOfDeath:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Pedestal:animation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 15.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "gemless", "gemed" ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("sound:stream")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 3.1, 9.2, 9.8, 15.4, 16.8, 18.2, 18.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("sound:playing")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 3.1, 3.6, 9.2, 9.6, 9.8, 13.5, 15.4, 16.1, 16.8, 17.4, 18.2, 18.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true, false, true, true ]
+}
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 6 )
+region = Rect2( 208, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 6 )
+region = Rect2( 176, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 6 )
+region = Rect2( 160, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 6 )
+region = Rect2( 144, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 6 )
+region = Rect2( 112, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 80, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 6 )
+region = Rect2( 80, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 6 )
+region = Rect2( 112, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 6 )
+region = Rect2( 144, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 6 )
+region = Rect2( 160, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 6 )
+region = Rect2( 176, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 6 )
+region = Rect2( 208, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 5 )
+region = Rect2( 80, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 5 )
+region = Rect2( 112, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 16, 48 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 5 )
+region = Rect2( 144, 0, 16, 48 )
+
+[sub_resource type="SpriteFrames" id=40]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": false,
+"name": "Close",
+"speed": 26.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": false,
+"name": "Open",
+"speed": 13.0
+}, {
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "Closed",
+"speed": 10.0
+} ]
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 12 )
+region = Rect2( 12, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 12 )
+region = Rect2( 24, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 12 )
+region = Rect2( 36, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 12 )
+region = Rect2( 48, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 12 )
+region = Rect2( 60, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 12 )
+region = Rect2( 72, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 12 )
+region = Rect2( 84, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 12 )
+region = Rect2( 96, 0, 12, 8 )
+
+[sub_resource type="SpriteFrames" id=50]
+animations = [ {
+"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 10 )
+region = Rect2( 12, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 10 )
+region = Rect2( 24, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 10 )
+region = Rect2( 36, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 10 )
+region = Rect2( 48, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 10 )
+region = Rect2( 60, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 10 )
+region = Rect2( 72, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 10 )
+region = Rect2( 84, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 13 )
+region = Rect2( 12, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 13 )
+region = Rect2( 24, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 13 )
+region = Rect2( 36, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 13 )
+region = Rect2( 48, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 13 )
+region = Rect2( 60, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 13 )
+region = Rect2( 72, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 13 )
+region = Rect2( 84, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 13 )
+region = Rect2( 96, 0, 12, 20 )
+
+[sub_resource type="SpriteFrames" id=69]
+animations = [ {
+"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
+"loop": true,
+"name": "gemless",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
+"loop": true,
+"name": "gemed",
+"speed": 18.0
+} ]
+
+[node name="EndCutscene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/New Anim" = SubResource( 1 )
+
+[node name="Door" type="AnimatedSprite" parent="."]
+position = Vector2( 1856, 464 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 40 )
+animation = "Closed"
+frame = 4
+playing = true
+
+[node name="Door2" type="AnimatedSprite" parent="."]
+position = Vector2( 2816, 464 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 40 )
+animation = "Open"
+frame = 13
+playing = true
+flip_h = true
+
+[node name="BiomeGrid" parent="." instance=ExtResource( 7 )]
+scale = Vector2( 1.75, 1.75 )
+
+[node name="Background1" parent="BiomeGrid" index="0"]
+tile_set = ExtResource( 8 )
+
+[node name="Foreground1" parent="BiomeGrid" index="2"]
+tile_set = ExtResource( 4 )
+tile_data = PoolIntArray( 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 3, 0, 8, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 3, 0, 15, 3, 0, 16, 3, 0, 17, 3, 0, 18, 3, 0, 19, 3, 0, 20, 3, 0, 21, 3, 0, 22, 3, 0, 23, 3, 0, 24, 3, 0, 25, 3, 0, 26, 3, 0, 27, 3, 0, 28, 3, 0, 29, 3, 0, 30, 3, 0, 31, 3, 0, 32, 9, 0, 33, 12, 0, 34, 3, 0, 35, 3, 0, 36, 3, 0, 37, 3, 0, 38, 3, 0, 39, 3, 0, 40, 3, 0, 41, 3, 0, 42, 3, 0, 43, 3, 0, 44, 3, 0, 45, 3, 0, 46, 3, 0, 47, 3, 0, 48, 3, 0, 49, 9, 0, 50, 12, 0, 65568, 4, 0, 65569, 2, 0, 65585, 4, 0, 65586, 2, 0, 131104, 4, 0, 131105, 2, 0, 131121, 4, 0, 131122, 2, 0, 196640, 4, 0, 196641, 2, 0, 196657, 4, 0, 196658, 2, 0, 262176, 4, 0, 262177, 2, 0, 262193, 4, 0, 262194, 2, 0, 327712, 4, 0, 327713, 2, 0, 327719, 13, 0, 327720, 14, 0, 327721, 14, 0, 327722, 14, 0, 327723, 15, 0, 327729, 4, 0, 327730, 2, 0, 393248, 7, 0, 393249, 6, 0, 393265, 7, 0, 393266, 6, 0, 720895, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 1, 0, 655382, 1, 0, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 655386, 1, 0, 655387, 1, 0, 655388, 1, 0, 655389, 1, 0, 655390, 1, 0, 655391, 1, 0, 655392, 1, 0, 655393, 1, 0, 655394, 1, 0, 655395, 1, 0, 655396, 1, 0, 655397, 1, 0, 655398, 1, 0, 655399, 1, 0, 655400, 1, 0, 655401, 1, 0, 655402, 1, 0, 655403, 1, 0, 655404, 1, 0, 655405, 1, 0, 655406, 1, 0, 655407, 1, 0, 655408, 1, 0, 655409, 1, 0, 655410, 1, 0, 655411, 1, 0, 655412, 1, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1824, 0 )
+anchor_mode = 0
+current = true
+
+[node name="gem" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 2272, 190 )
+scale = Vector2( 7, 7 )
+frames = SubResource( 50 )
+frame = 1
+playing = true
+
+[node name="Player" type="AnimatedSprite" parent="."]
+position = Vector2( 2325, 240 )
+scale = Vector2( 1.75, 1.75 )
+frames = ExtResource( 3 )
+animation = "Idle"
+frame = 3
+playing = true
+offset = Vector2( 32, 0 )
+
+[node name="LeftWall" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 2139.99, -169.271 )
+frame = 2
+
+[node name="RightWall" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 2490, -261.291 )
+scale = Vector2( -4, 4 )
+
+[node name="TopWall" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 2930, 30 )
+rotation = 1.5708
+frame = 0
+
+[node name="Pedestal" type="AnimatedSprite" parent="."]
+position = Vector2( 2272, 224 )
+scale = Vector2( 5.75, 5.75 )
+frames = SubResource( 69 )
+animation = "gemed"
+frame = 7
+playing = true
+
+[node name="BottomWallOfDeath" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 1856, 300 )
+scale = Vector2( 1.1, 1 )
+frame = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 1784.0
+margin_top = -24.0
+margin_right = 3008.0
+margin_bottom = 768.0
+color = Color( 0.60606, 0.60606, 0.60606, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+script = ExtResource( 14 )
+PlayInstantly = true
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+script = ExtResource( 16 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="BiomeGrid"]
